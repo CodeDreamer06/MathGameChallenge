@@ -1,0 +1,6 @@
+﻿namespace MathGameChallenge;
+
+class QuizManager
+{
+
+}
