@@ -6,9 +6,11 @@ class UserInput
 {
     public static void Start()
     {
-        Console.WriteLine("Welcome back, Abhinav!");
-        Console.WriteLine("Use arrow keys to navigate through the menu.");
+        Helpers.WriteUsingTypeWriter("Welcome back, Abhinav!");
+        Helpers.ShowHistory();
 
+        Helpers.WriteUsingTypeWriter("Use arrow keys to navigate through the menu.");
+        Console.WriteLine();
         var operation = Prompt.Select<Operation>("Pick the poison of your choice");
         var difficulty = Prompt.Select<Level>("Now, select your dose");
         Console.Clear();
@@ -16,11 +18,12 @@ class UserInput
         var score = QuizManager.StartQuiz(operation, difficulty);
         Console.Clear();
 
-        Console.Write($"You scored {score}! ");
-        Console.WriteLine(GetCompliment(score, difficulty));
+        Helpers.ShowHighScoreMessage(score);
+        Helpers.WriteUsingTypeWriter($"You scored {score}! " + GetCompliment(score, difficulty));
+        Helpers.SaveScore(score, operation);
     }
 
-    public static string GetCompliment(int score, Level difficulty) => score switch
+    static string GetCompliment(int score, Level difficulty) => score switch
     {
         10 => "Genius! Keep it up. " + (difficulty != Level.Hard ? "Why not try a harder level next time?" : ""),
         > 9 => "Splendid! You're almost there.",

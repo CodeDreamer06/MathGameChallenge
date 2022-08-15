@@ -1,6 +1,6 @@
 ﻿namespace MathGameChallenge;
 
-class DivisionFactory: IArithematicFactory
+class DivisionFactory: IArithmeticFactory
 {
     readonly Random Random = new();
 

@@ -1,12 +1,12 @@
 ﻿namespace MathGameChallenge;
 
-class AdditionFactory : IArithematicFactory
+class MultiplicationFactory: IArithmeticFactory
 {
     readonly Random Random = new();
 
     Level Difficulty { get; set; }
 
-    public AdditionFactory(Level level) => Difficulty = level;
+    public MultiplicationFactory(Level level) => Difficulty = level;
 
     public Question GenerateQuestion()
     {
@@ -15,16 +15,16 @@ class AdditionFactory : IArithematicFactory
 
         return new Question()
         {
-            Title = $"{number1} + {number2}",
-            Answer = number1 + number2,
+            Title = $"{number1} x {number2}",
+            Answer = number1 * number2,
         };
     }
 
     int GenerateNumber() => Difficulty switch
     {
-        Level.Easy => Random.Next(2, 80),
-        Level.Medium => Random.Next(80, 200),
-        Level.Hard => Random.Next(200, 1000),
+        Level.Easy => Random.Next(2, 20),
+        Level.Medium => Random.Next(20, 50),
+        Level.Hard => Random.Next(50, 100),
         _ => throw new NotSupportedException(),
     };
 }

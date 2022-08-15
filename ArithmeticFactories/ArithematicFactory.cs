@@ -2,7 +2,7 @@
 
 static class ArithematicFactory
 {
-    public static IArithematicFactory GetFactory(Operation operation, Level level) => operation switch
+    public static IArithmeticFactory GetFactory(Operation operation, Level level) => operation switch
     {
         Operation.Addition => new AdditionFactory(level),
         Operation.Subtraction => new SubtractionFactory(level),

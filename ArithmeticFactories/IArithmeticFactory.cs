@@ -1,6 +1,6 @@
 ﻿namespace MathGameChallenge;
 
-interface IArithematicFactory
+interface IArithmeticFactory
 {
     Question GenerateQuestion();
 }
