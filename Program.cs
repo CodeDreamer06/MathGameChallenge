@@ -2,5 +2,8 @@
 
 class Program
 {
-    static void Main(string[] args) => UserInput.Start();
+    static void Main(string[] args)
+    {
+        UserInput.Start();
+    }
 }
