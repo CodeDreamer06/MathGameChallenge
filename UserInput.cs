@@ -15,12 +15,14 @@ class UserInput
         var difficulty = Prompt.Select<Level>("Now, select your dose");
         Console.Clear();
 
+        var startTime = DateTime.Now;
         var score = QuizManager.StartQuiz(operation, difficulty);
+        var endTime = DateTime.Now;
         Console.Clear();
 
-        Helpers.ShowHighScoreMessage(score);
+        Helpers.CongratulateUser(score);
         Helpers.WriteUsingTypeWriter($"You scored {score}! " + GetCompliment(score, difficulty));
-        Helpers.SaveScore(score, operation);
+        Helpers.SaveScore(score, operation, endTime - startTime, difficulty);
     }
 
     static string GetCompliment(int score, Level difficulty) => score switch

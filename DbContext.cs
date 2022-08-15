@@ -8,7 +8,7 @@ class HistoryContext : DbContext
 
     public HistoryContext() => Database.EnsureCreated();
 
-    protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseSqlite($"Data Source=mathGame.db");
+    protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseSqlite($"Data Source=math_game.db");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -18,6 +18,8 @@ class HistoryContext : DbContext
             entity.Property(e => e.Date);
             entity.Property(e => e.Score).IsRequired();
             entity.Property(e => e.GameType).IsRequired();
+            entity.Property(e => e.Difficulty).IsRequired();
+            entity.Property(e => e.Duration).IsRequired();
         });
     }
 }

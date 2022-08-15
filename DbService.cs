@@ -42,4 +42,6 @@ class DbService
     }
 
     public bool IsHighScore(int score) => score > _db.History.Max(log => log.Score);
+
+    public bool IsEmpty() => _db.History.Count() == 0;
 }

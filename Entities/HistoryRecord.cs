@@ -10,5 +10,16 @@ class HistoryRecord
 
     public Operation GameType { get; set; }
 
-    public HistoryRecord GetDeepClone() => new() { Id = Id, Date = Date, Score = Score, GameType = GameType };
+    public Level Difficulty { get; set; }
+
+    public TimeSpan Duration { get; set; }
+
+    public HistoryRecord GetDeepClone() => new() {
+        Id = Id,
+        Date = Date,
+        Score = Score,
+        GameType = GameType,
+        Difficulty = Difficulty,
+        Duration = Duration
+    };
 }

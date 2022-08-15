@@ -38,7 +38,7 @@ static class Helpers
             .ExportAndWriteLine();
     }
 
-    public static void SaveScore(int score, Operation gameType)
+    public static void SaveScore(int score, Operation gameType, TimeSpan duration, Level level)
     {
         var db = new DbService();
         var historyRecord = new HistoryRecord()
@@ -46,6 +46,8 @@ static class Helpers
             Date = DateTime.Now,
             Score = score,
             GameType = gameType,
+            Duration = TimeSpan.FromSeconds(Math.Round(duration.TotalSeconds)),
+            Difficulty = level
         };
 
         db.Add(historyRecord);
@@ -62,11 +64,11 @@ static class Helpers
         Console.WriteLine();
     }
 
-    public static void ShowHighScoreMessage(int score)
+    public static void CongratulateUser(int score)
     {
         var db = new DbService();
 
-        if (db.IsHighScore(score))
+        if (!db.IsEmpty() && db.IsHighScore(score))
             WriteUsingTypeWriter("Congratulations! You just reached a new high score!");
     }
 
