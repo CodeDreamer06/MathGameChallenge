@@ -9,6 +9,7 @@ static class ArithematicFactory
         Operation.Multiplication => new MultiplicationFactory(level),
         Operation.Division => new DivisionFactory(level),
         Operation.Square => new SquareFactory(level),
+        Operation.Cube => new CubeFactory(level),
         _ => throw new NotSupportedException(),
     };
 }

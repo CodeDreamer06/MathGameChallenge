@@ -38,7 +38,7 @@ static class Helpers
             .ExportAndWriteLine();
     }
 
-    public static void SaveScore(int score, Operation gameType, TimeSpan duration, Level level)
+    public static void SaveScore(int score, Operation gameType, Level level, TimeSpan duration = new())
     {
         var db = new DbService();
         var historyRecord = new HistoryRecord()
@@ -62,6 +62,23 @@ static class Helpers
         db.Read();
 
         Console.WriteLine();
+    }
+
+    public static T GetRandomEnumValue<T>()
+    {
+        var random = new Random();
+        var enumValues = Enum.GetValues(typeof(T));
+        return (T)enumValues.GetValue(random.Next(enumValues.Length))!;
+    }
+
+    public static Operation GetRandomOperation()
+    {
+        var operation = Operation.FreestyleSurvival;
+
+        while(operation == Operation.FreestyleSurvival)
+            operation = GetRandomEnumValue<Operation>();
+
+        return operation;
     }
 
     public static void CongratulateUser(int score)
@@ -101,6 +118,7 @@ static class Helpers
             var name = Sharprompt.Prompt.Input<string>("Hey there, What's your name?");
             using TextWriter writer = new StreamWriter("gameConfig.txt");
             writer.WriteLine(name);
+
             Console.Clear();
             WriteUsingTypeWriter($"Welcome, {name}!");
         }

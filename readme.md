@@ -1,6 +1,19 @@
-﻿# Math Game Challenge   &nbsp;  ![GitHub issues](https://img.shields.io/github/issues/Codedreamer06/MathGameChallenge)
+﻿
+# Math Game Challenge   &nbsp;  ![GitHub issues](https://img.shields.io/github/issues/Codedreamer06/MathGameChallenge)
 This repository was created as a part of a competition to showcase a simple math game.
-## Program Flow UML
+
+## Motivation & Features
+* This project is a command line-based game that helps you to get better at mental arithmetic.
+
+* It covers addition, subtraction, multiplication, division and square and cube numbers. It uses the **abstract factory design pattern** which makes it easy to add new arithmetic operators into the game.
+
+* You have three levels to choose from: easy, medium and hard. At the end of each session, your score is saved into an SQLite database, which is shown before the start of the game. Your name is saved is saved in a config file, so you won't be pestered by asking that everytime.
+
+* As an added bonus, there's a **freestyle-survival mode**, where you can interleave the practice of different operators together, without worrying about the timer. You get only three chances though!
+
+**It took me a great deal of time to make this happen, including the story lines, complements and not to mention all the other bells and whistles that come along with the game. An upvote would be greatly appreciated. Have fun!  😊**
+
+## Program Flow
 ```mermaid
 classDiagram
   class Program {
@@ -65,16 +78,24 @@ classDiagram
 	  +GenerateQuestion() Question
 	  -GenerateNumber() int
   }
+  
+  class CubeFactory {
+	  -Random Random
+	  +Level Difficulty
+	  +GenerateQuestion() Question
+	  -GenerateNumber() int
+  }
   AdditionFactory ..|> IArithmeticFactory
   SubtractionFactory ..|> IArithmeticFactory
   MultiplicationFactory ..|> IArithmeticFactory
   DivisionFactory ..|> IArithmeticFactory
   SquareFactory ..|> IArithmeticFactory
+  CubeFactory ..|> IArithmeticFactory
 ```
-## Entities UML
+## Entities
 ```mermaid
 classDiagram
-  class Levels {
+  class Operations {
 	<<Enum>>
 	+Addition
     +Subtraction
@@ -103,7 +124,7 @@ classDiagram
     +GetDeepClone() HistoryRecord
   }
 ```
-## Helpers UML
+## Helpers
 ```mermaid
 classDiagram
   class Helpers {
@@ -115,7 +136,9 @@ classDiagram
     +SaveScore(int score, Operation gameType)
     +ShowHistory()
     +ShowHighScoreMessage(int score)
-    +WriteUsingTypeWriter(string message)
+    +WriteUsingTypeWriter(string message, int delay, int finalsleep)
+    +GreetUser()
+    +ShowStoryLine()
   }
   
   class HistoryContext {
@@ -131,14 +154,7 @@ classDiagram
 	  +IsHighScore(int score) bool
   }
 ```
-## Motivation & Features
-* This project is a command line-based game that helps you to get better at mental arithmetic.
 
-* It covers addition, subtraction, multiplication, division and square numbers. It uses the **abstract factory design pattern** which makes it easy to add new arithmetic operators into the game.
-
-* You have three levels to choose from: easy, medium and hard. At the end of each session, your score is saved into an SQLite database, which is shown before the start of the game.
-
-**Have fun!**
 ## Contribution
 If you have any ideas,   [open an issue](https://github.com/CodeDreamer06/MathGameChallenge/issues/new)  and tell me what you think. If you'd like to contribute, please fork the repository and make changes as you'd like. Pull requests are warmly welcome.
 1. Fork it
