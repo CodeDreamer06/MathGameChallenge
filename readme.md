@@ -9,7 +9,7 @@ classDiagram
 
   class UserInput {
     +Start()
-    -GetCompliment(int score, Level difficulty) string
+    -GetComplement(int score, Level difficulty) string
   }
   
   class QuizManager {

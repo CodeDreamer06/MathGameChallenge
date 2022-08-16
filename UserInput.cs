@@ -6,7 +6,7 @@ class UserInput
 {
     public static void Start()
     {
-        Helpers.WriteUsingTypeWriter("Welcome back, Abhinav!");
+        Helpers.GreetUser();
         Helpers.ShowHistory();
 
         Helpers.WriteUsingTypeWriter("Use arrow keys to navigate through the menu.");
@@ -21,7 +21,7 @@ class UserInput
         Console.Clear();
 
         Helpers.CongratulateUser(score);
-        Helpers.WriteUsingTypeWriter($"You scored {score}! " + GetCompliment(score, difficulty));
+        Helpers.WriteUsingTypeWriter($"You scored {score}! " + GetComplement(score, difficulty));
         Helpers.SaveScore(score, operation, endTime - startTime, difficulty);
 
         Helpers.WriteUsingTypeWriter("Press any key to continue...");
@@ -30,7 +30,7 @@ class UserInput
         Start();
     }
 
-    static string GetCompliment(int score, Level difficulty) => score switch
+    static string GetComplement(int score, Level difficulty) => score switch
     {
         10 => "Genius! Keep it up. " + (difficulty != Level.Hard ? "Why not try a harder level next time?" : ""),
         > 9 => "Splendid! You're almost there.",

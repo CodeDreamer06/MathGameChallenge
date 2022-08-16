@@ -72,15 +72,50 @@ static class Helpers
             WriteUsingTypeWriter("Congratulations! You just reached a new high score!");
     }
 
-    public static void WriteUsingTypeWriter(string message)
+    public static void WriteUsingTypeWriter(string message, int delay = 30, int finalSleep = 100)
     {
         for(int i = 0; i < message.Length; i++)
         {
             Console.Write(message[i]);
-            Thread.Sleep(30);
+            Thread.Sleep(delay);
         }
 
         Console.WriteLine();
-        Thread.Sleep(100);
+        Thread.Sleep(finalSleep);
+    }
+
+    public static void GreetUser()
+    {
+        try
+        {
+            using TextReader reader = new StreamReader("gameConfig.txt");
+
+            string? name = reader.ReadLine();
+            if (name is null) throw new InvalidOperationException();
+
+            WriteUsingTypeWriter($"Welcome back, {name}!");
+        }
+
+        catch {
+            ShowStoryLine();
+            var name = Sharprompt.Prompt.Input<string>("Hey there, What's your name?");
+            using TextWriter writer = new StreamWriter("gameConfig.txt");
+            writer.WriteLine(name);
+            Console.Clear();
+            WriteUsingTypeWriter($"Welcome, {name}!");
+        }
+    }
+
+    public static void ShowStoryLine()
+    {
+        WriteUsingTypeWriter("You are the student of the great Indian mathematician, Aryabhata.", finalSleep: 800);
+        Console.WriteLine();
+        WriteUsingTypeWriter("You learnt a ton of stuff from your master. Just before you have your farewell and bid goodbye to your friends, your mentor decides to put you to the test. ", finalSleep: 2000);
+        Console.WriteLine();
+        WriteUsingTypeWriter("You are given a magical stone slate, and you have to pass the math test to go home. Get ready for the wild ride...", finalSleep: 2000);
+        Console.WriteLine();
+        WriteUsingTypeWriter("Press any key to continue...", delay: 100);
+        Console.ReadKey();
+        Console.Clear();
     }
 }
