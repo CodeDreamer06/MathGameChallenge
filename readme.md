@@ -3,7 +3,7 @@
 This repository was created as a part of a competition to showcase a simple math game.
 
 ## Getting Started
-![demo](demo/demo.mp4)
+https://user-images.githubusercontent.com/85114885/184918386-dad460e0-49b6-4290-8011-30d969ccc597.mp4
 
 ## Motivation & Features
 * This project is a command line-based game that helps you to get better at mental arithmetic.
