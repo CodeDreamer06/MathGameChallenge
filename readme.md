@@ -1,5 +1,4 @@
-﻿
-# Math Game Challenge   &nbsp;  ![GitHub issues](https://img.shields.io/github/issues/Codedreamer06/MathGameChallenge)
+﻿# Math Game Challenge   &nbsp;  ![GitHub issues](https://img.shields.io/github/issues/CodeDreamer06/MathGameChallenge)
 This repository was created as a part of a competition to showcase a simple math game.
 
 ## Getting Started
@@ -110,6 +109,7 @@ classDiagram
     +Multiplication
     +Division
     +Square
+    +Cube
     +FreestyleSurvival
   }
 
