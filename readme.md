@@ -2,6 +2,9 @@
 # Math Game Challenge   &nbsp;  ![GitHub issues](https://img.shields.io/github/issues/Codedreamer06/MathGameChallenge)
 This repository was created as a part of a competition to showcase a simple math game.
 
+## Getting Started
+![demo](demo/demo.mp4)
+
 ## Motivation & Features
 * This project is a command line-based game that helps you to get better at mental arithmetic.
 
