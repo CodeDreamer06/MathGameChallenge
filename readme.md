@@ -1,11 +1,11 @@
 ﻿
-# Math Game Challenge   &nbsp;  ![GitHub issues](https://img.shields.io/github/issues/CodeDreamer06/MathGameChallenge)
+# Math Game Challenge   &nbsp;  ![GitHub issues](https://img.shields.io/github/issues/Codedreamer06/MathGameChallenge)
 This repository was created as a part of a competition to showcase a simple math game.
 
 ## Getting Started
 https://user-images.githubusercontent.com/85114885/184918386-dad460e0-49b6-4290-8011-30d969ccc597.mp4
 
-## Motivation & Features	
+## Motivation & Features
 * This project is a command line-based game that helps you to get better at mental arithmetic.
 
 * It covers addition, subtraction, multiplication, division and square and cube numbers. It uses the **abstract factory design pattern** which makes it easy to add new arithmetic operators into the game.
@@ -25,11 +25,16 @@ classDiagram
 
   class UserInput {
     +Start()
+    -ConductStandardQuiz()
+    -ConductFreestyleQuiz()
+    -ShowEndScreen(Operation  operation, Level  difficulty, int  score, TimeSpan  duration)
+    -RedirectToStart()
     -GetComplement(int score, Level difficulty) string
   }
   
   class QuizManager {
 	  +startQuiz(Operation operation, Level level) int
+	  +StartFreestyleSurvival() int
   }
     
   Program ..|> UserInput
@@ -105,6 +110,7 @@ classDiagram
     +Multiplication
     +Division
     +Square
+    +FreestyleSurvival
   }
 
   class Question {
@@ -142,6 +148,8 @@ classDiagram
     +WriteUsingTypeWriter(string message, int delay, int finalsleep)
     +GreetUser()
     +ShowStoryLine()
+    +GetRandomEnumValue<T>() T
+    +GetRandomOperation() Operation
   }
   
   class HistoryContext {
